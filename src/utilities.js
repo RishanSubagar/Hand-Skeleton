@@ -4,7 +4,7 @@ export const drawHand = (predictions, ctx) =>{
         // Go through each prediction
         predictions.forEach(prediction => {
             // Get landmarks
-            const landmarks = predictions.landmarks;
+            const landmarks = prediction.landmarks;
 
             // Loop through landmarks and draw them
             for (let i=0; i<landmarks.length; i++) {
