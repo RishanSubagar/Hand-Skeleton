@@ -1,9 +1,11 @@
 //import logo from './logo.svg';
+import { useRef } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as handpose from '@tensorflow-models/handpose';
 import Webcam from 'react-webcam';
 import './App.css';
-import { useRef } from 'react';
+import { drawHand } from './utilities';
+
 
 function App() {
   const webcamRef = useRef(null);
@@ -40,6 +42,10 @@ function App() {
       // Make Detections
       const hand = await neuralNet.estimateHands(video);
       console.log(hand);
+
+      // Draw mesh
+      const ctx = canvasRef.current.getContext("2d");
+      drawHand(hand, ctx);
 
     }
     
